@@ -24,3 +24,12 @@ export const fetchAttractions = async () => {
     console.log(error);
   }
 };
+
+export const fetchRegions = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/Region`);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};

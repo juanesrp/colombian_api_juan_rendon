@@ -1,0 +1,51 @@
+/* PresidentsParty.module.css */
+
+.container {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.listItem {
+  background-color: #fff;
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.listItem:hover {
+  background-color: #e6e6e6;
+}
+
+.partyName {
+  font-weight: bold;
+  color: #444;
+}
+
+.partyCount {
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+}

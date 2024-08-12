@@ -1,0 +1,22 @@
+.entityCount {
+  background-color: #f0f4f8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.count {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3366cc;
+  margin: 0;
+}
+
+.entityName {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 5px 0 0;
+  text-transform: capitalize;
+}
