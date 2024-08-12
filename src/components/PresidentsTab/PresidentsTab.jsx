@@ -22,10 +22,8 @@ const PresidentsTab = ({ data }) => {
 
   return (
     <>
-      <h2>Presidentes</h2>
       <EntityCount entityName={"Presidentes"} count={data.length} />
-      <h3>Lista de presidentes:</h3>
-      <EntityTable data={data} columns={columns} />
+      <EntityTable data={data} columns={columns} entityName={"Presidentes"} />
       <PresidentsParty data={data} />
     </>
   );

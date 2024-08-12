@@ -22,10 +22,8 @@ const AttractionsTab = ({ data }) => {
 
   return (
     <>
-      <h2>Atracciones</h2>
       <EntityCount entityName={"Atracciones"} count={data.length} />
-      <h3>Lista de atracciones:</h3>
-      <EntityTable data={data} columns={columns} />
+      <EntityTable data={data} columns={columns} entityName={"Atracciones"} />
       <LocationAttraction data={data} />
     </>
   );

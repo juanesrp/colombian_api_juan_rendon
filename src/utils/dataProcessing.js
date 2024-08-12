@@ -2,7 +2,7 @@ export const groupByPresidentsParty = (data) => {
   const groupedByParty = {};
 
   data.forEach((president) => {
-    const party = president.politicalParty;
+    const party = president.politicalParty.toUpperCase();
     if (groupedByParty[party]) {
       groupedByParty[party] += 1;
     } else {
@@ -54,14 +54,13 @@ export const groupByLocationAttraction = (data) => {
       };
     }
   });
-  console.log(groupedByLocationAttraction);
   return groupedByLocationAttraction;
 };
 
 export const groupByRegionDepartmentCityType = (airports, regions) => {
-  const groupedData = {};
+  const groupedData = { region: {} };
 
-  // Crear un mapa de regiones para acceso rápido
+  // Crea objeto para mapear las regiones con su id y nombre
   const regionsMap = {};
   regions.forEach((region) => {
     regionsMap[region.id] = region.name.toLowerCase();
@@ -71,41 +70,45 @@ export const groupByRegionDepartmentCityType = (airports, regions) => {
     const { type, department, city } = airport;
     const regionName = regionsMap[department.regionId];
 
-    // Inicializar región si no existe
-    if (!groupedData[regionName]) {
-      groupedData[regionName] = { departamento: {} };
+    // Cada uno d elos if, inicializa la propiedad si no existe
+    if (!groupedData.region[regionName]) {
+      groupedData.region[regionName] = { departamento: {} };
     }
 
-    // Inicializar departamento si no existe
-    if (!groupedData[regionName].departamento[department.name.toLowerCase()]) {
-      groupedData[regionName].departamento[department.name.toLowerCase()] = {
-        ciudad: {},
-      };
-    }
-
-    // Inicializar ciudad si no existe
     if (
-      !groupedData[regionName].departamento[department.name.toLowerCase()]
-        .ciudad[city.name.toLowerCase()]
+      !groupedData.region[regionName].departamento[
+        department.name.toLowerCase()
+      ]
     ) {
-      groupedData[regionName].departamento[
+      groupedData.region[regionName].departamento[
+        department.name.toLowerCase()
+      ] = { ciudad: {} };
+    }
+
+    if (
+      !groupedData.region[regionName].departamento[
+        department.name.toLowerCase()
+      ].ciudad[city.name.toLowerCase()]
+    ) {
+      groupedData.region[regionName].departamento[
         department.name.toLowerCase()
       ].ciudad[city.name.toLowerCase()] = { tipo: {} };
     }
 
     // Inicializar tipo si no existe y aumentar el conteo
     if (
-      !groupedData[regionName].departamento[department.name.toLowerCase()]
-        .ciudad[city.name.toLowerCase()].tipo[type.toLowerCase()]
+      !groupedData.region[regionName].departamento[
+        department.name.toLowerCase()
+      ].ciudad[city.name.toLowerCase()].tipo[type.toLowerCase()]
     ) {
-      groupedData[regionName].departamento[
+      groupedData.region[regionName].departamento[
         department.name.toLowerCase()
       ].ciudad[city.name.toLowerCase()].tipo[type.toLowerCase()] = 0;
     }
 
-    groupedData[regionName].departamento[department.name.toLowerCase()].ciudad[
-      city.name.toLowerCase()
-    ].tipo[type.toLowerCase()] += 1;
+    groupedData.region[regionName].departamento[
+      department.name.toLowerCase()
+    ].ciudad[city.name.toLowerCase()].tipo[type.toLowerCase()] += 1;
   });
 
   console.log("groupedData", groupedData);

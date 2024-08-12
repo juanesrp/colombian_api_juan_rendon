@@ -5,6 +5,9 @@ import {
 } from "../../utils/dataProcessing";
 import { fetchRegions } from "../../utils/api";
 import EntityTable from "../EntityTable/EntityTable";
+import EntityCount from "../EntityCount/EntityCount";
+import LocationAirport from "../groups/LocationAirport/LocationAirport";
+import RegionAirport from "../groups/RegionAirport/RegionAirport";
 
 const AirportsTab = ({ data }) => {
   const [regions, setRegions] = useState([]);
@@ -43,20 +46,10 @@ const AirportsTab = ({ data }) => {
 
   return (
     <>
-      <h2>Aeropuertos</h2>
-      <p>Total de aeropuertos: {data.length}</p>
-      <h3>Aeropuertos por ubicación:</h3>
-      <ul>
-        {groupedByLocation.map(({ department, city, count }) => (
-          <li key={`${department}-${city}`}>
-            {department}, {city}, {count}
-          </li>
-        ))}
-      </ul>
-      <h3>Lista de aeropuertos:</h3>
-      <EntityTable data={data} columns={columns} />
-      <h3>Agrupamiento por region, departamento, ciudad y tipo:</h3>
-      <pre>{JSON.stringify(regionDepartmentCityType, null, 2)}</pre>
+      <EntityCount entityName={"Aeropuertos"} count={data.length} />
+      <EntityTable data={data} columns={columns} entityName={"Aeropuertos"} />
+      <LocationAirport groupedByLocation={groupedByLocation} />
+      <RegionAirport regionDepartmentCityType={regionDepartmentCityType} />
     </>
   );
 };

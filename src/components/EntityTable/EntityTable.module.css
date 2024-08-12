@@ -3,6 +3,13 @@
   margin-bottom: 20px;
 }
 
+.title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .entityTable {
   width: 100%;
   border-collapse: collapse;
