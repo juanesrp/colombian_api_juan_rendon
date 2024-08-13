@@ -5,6 +5,9 @@ const RegionAirport = ({ regionDepartmentCityType }) => {
   // Aplanar la estructura de datos
   const flattenedData = [];
 
+  /*Iteramos sobre el array que nos devuelve Object.entries sobre cada unos de sus valores Region Departamento Ciudad y Tipo 
+   y con esto creamos un objeto con la forma {Region,Departamento,Ciudad,Tipo,Conteo}
+   */
   Object.entries(regionDepartmentCityType?.region ?? {}).forEach(
     ([region, departments]) => {
       Object.entries(departments?.departamento ?? {}).forEach(

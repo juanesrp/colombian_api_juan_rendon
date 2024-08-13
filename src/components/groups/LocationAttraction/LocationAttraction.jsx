@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./LocationAttraction.module.css";
 import { groupByLocationAttraction } from "../../../utils/dataProcessing";
+import { fetchDepartments } from "../../../utils/api";
 
 const LocationAttraction = ({ data }) => {
-  const groupedByLocationAttraction = Object.values(
-    groupByLocationAttraction(data)
-  );
+  const [departments, setDepartments] = useState([]);
+  const [groupedByLocationAttraction, setGroupedByLocationAttraction] =
+    useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const departments = await fetchDepartments();
+        setDepartments(departments);
+        const byLocationAttraction = Object.values(
+          groupByLocationAttraction(data, departments)
+        );
+
+        setGroupedByLocationAttraction(byLocationAttraction);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.container}>

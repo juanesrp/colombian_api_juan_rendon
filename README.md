@@ -1,8 +1,40 @@
-# React + Vite
+# Colombia API Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📋 Descripción
 
-Currently, two official plugins are available:
+Este proyecto es un dashboard interactivo que utiliza la API Colombia para mostrar información sobre presidentes, aeropuertos y atracciones turísticas de Colombia. demuestra habilidades en React, manejo de APIs y visualización de datos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías Utilizadas
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+## 🚀 Instalación y Uso
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/juanesrp/colombian_api_juan_rendon.git
+```
+
+2. Navega al directorio del proyecto:
+
+```bash
+cd colombian_api_juan_rendon
+```
+
+3. Instala las dependencias:
+
+```bash
+npm install
+```
+
+4. Inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+5. Abre tu navegador y visita `http://localhost:5173/colombia_dash`

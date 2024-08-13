@@ -1,3 +1,5 @@
+import { fetchDepartments } from "./api";
+
 export const groupByPresidentsParty = (data) => {
   const groupedByParty = {};
 
@@ -39,21 +41,29 @@ export const groupByLocationAirport = (data) => {
   return groupedByLocationAirport;
 };
 
-export const groupByLocationAttraction = (data) => {
+export const groupByLocationAttraction = (data, departments) => {
   const groupedByLocationAttraction = {};
 
+  const departmentsMap = {};
+  departments.forEach((item) => {
+    departmentsMap[item.id] = item.name;
+  });
+
   data.forEach((item) => {
-    const key = item.city.departmentId + "-" + item.city.name;
+    const departmentName = departmentsMap[item.city.departmentId];
+    const key = departmentName + "-" + item.city.name;
     if (groupedByLocationAttraction[key]) {
       groupedByLocationAttraction[key].count += 1;
     } else {
       groupedByLocationAttraction[key] = {
-        department: item.city.departmentId,
+        department: departmentName,
         city: item.city.name,
         count: 1,
       };
     }
   });
+
+  console.log("groupedByLocationAttraction: ", groupedByLocationAttraction);
   return groupedByLocationAttraction;
 };
 
@@ -70,7 +80,7 @@ export const groupByRegionDepartmentCityType = (airports, regions) => {
     const { type, department, city } = airport;
     const regionName = regionsMap[department.regionId];
 
-    // Cada uno d elos if, inicializa la propiedad si no existe
+    // Cada uno de los if, inicializa la propiedad si no existe
     if (!groupedData.region[regionName]) {
       groupedData.region[regionName] = { departamento: {} };
     }
@@ -110,8 +120,6 @@ export const groupByRegionDepartmentCityType = (airports, regions) => {
       department.name.toLowerCase()
     ].ciudad[city.name.toLowerCase()].tipo[type.toLowerCase()] += 1;
   });
-
-  console.log("groupedData", groupedData);
 
   return groupedData;
 };

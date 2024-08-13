@@ -1,13 +1,10 @@
 import styles from "./EntityTable.module.css";
 
-function EntityTable({ data, columns, entityName }) {
+function EntityTable({ data, columns }) {
   if (!data || data.length === 0) return <p>No hay datos disponibles.</p>;
-
-  console.log(columns);
 
   return (
     <div className={styles.tableContainer}>
-      <h3 className={styles.title}>Listado de {entityName}:</h3>
       <table className={styles.entityTable}>
         <thead>
           <tr>

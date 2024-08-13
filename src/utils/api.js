@@ -33,3 +33,12 @@ export const fetchRegions = async () => {
     console.log(error);
   }
 };
+
+export const fetchDepartments = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/Department`);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
